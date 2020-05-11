@@ -2,19 +2,30 @@
   "name": "nodejs",
   "version": "1.0.0",
   "description": "",
-  "main": "11/server.js",
+  "main": "12/server.js",
   "scripts": {
-    "start": "nodemon",
-    "flow": "flow"
+    "start": "nodemon --ignore frontend/",
+    "flow": "flow",
+    "dev": "webpack -w"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "ejs": "^3.1.2",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "core-js": "^3.3.2",
+    "css-loader": "^3.2.0",
+    "regenerator-runtime": "^0.13.3",
+    "style-loader": "^1.0.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.20.2",

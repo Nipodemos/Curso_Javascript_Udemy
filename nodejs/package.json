@@ -2,7 +2,7 @@
   "name": "nodejs",
   "version": "1.0.0",
   "description": "",
-  "main": "16/server.js",
+  "main": "17/server.js",
   "scripts": {
     "start": "nodemon --ignore frontend/",
     "flow": "flow",
@@ -16,10 +16,12 @@
     "connect-mongo": "^3.2.0",
     "core-js": "^3.3.2",
     "css-loader": "^3.2.0",
+    "csurf": "^1.11.0",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.2",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "helmet": "^3.22.0",
     "mongoose": "^5.9.13",
     "regenerator-runtime": "^0.13.3",
     "style-loader": "^1.0.0"

@@ -1,12 +1,12 @@
 require('dotenv').config()
 
 const express = require('express')
+const app = express()
 const routes = require('./routes')
 const path = require('path')
 const { middlewareGlobal, checkCSRFerror, csrfMiddleware } = require('./src/middlewares/middleware')
-const mongoose = require('mongoose')
-const app = express()
 
+const mongoose = require('mongoose')
 // Essa constante CONNECTIONSTRING veio do arquivo .env (ou dotenv) que é um arquivo pra salvar
 // informações delicadas como a senha de acesso ao seu banco de dados
 // se por um acaso vc consegui fazer a proeza de perder esse arquivo ou seu PC estragou denovo
@@ -21,11 +21,13 @@ mongoose.connect(process.env.CONNECTIONSTRING, { useNewUrlParser: true, useUnifi
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
 const flash = require('connect-flash')
-app.use(express.urlencoded({ extended: true }))
 
 const helmet = require('helmet')
 app.use(helmet())
+app.use(routes)
 
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 app.use(express.static(path.resolve(__dirname, 'public')))
 
 const UM_DIA_EM_MILESIMOS = 86400000
@@ -52,7 +54,6 @@ app.use(csrf())
 app.use(middlewareGlobal)
 app.use(checkCSRFerror)
 app.use(csrfMiddleware)
-app.use(routes)
 
 app.on('pronto', () => {
   const port = 3333
